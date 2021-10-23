@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductViewDlg" widgetVar="ProductViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProductTitle}">
+            <h:form id="ProductViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProductLabel_id}"/>
+                        <h:outputText value="#{productController.selected.id}" title="#{bundle.ViewProductTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_name}"/>
+                        <h:outputText value="#{productController.selected.name}" title="#{bundle.ViewProductTitle_name}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_slug}"/>
+                        <h:outputText value="#{productController.selected.slug}" title="#{bundle.ViewProductTitle_slug}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_detailDescription}"/>
+                        <h:outputText value="#{productController.selected.detailDescription}" title="#{bundle.ViewProductTitle_detailDescription}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_shortDescription}"/>
+                        <h:outputText value="#{productController.selected.shortDescription}" title="#{bundle.ViewProductTitle_shortDescription}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_partNumber}"/>
+                        <h:outputText value="#{productController.selected.partNumber}" title="#{bundle.ViewProductTitle_partNumber}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_categories}"/>
+                        <h:outputText value="#{productController.selected.categories}" title="#{bundle.ViewProductTitle_categories}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_productTag}"/>
+                        <h:outputText value="#{productController.selected.productTag}" title="#{bundle.ViewProductTitle_productTag}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_wishlist}"/>
+                        <p:selectBooleanCheckbox value="#{productController.selected.wishlist}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_quantity}"/>
+                        <h:outputText value="#{productController.selected.quantity}" title="#{bundle.ViewProductTitle_quantity}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_createDate}"/>
+                        <h:outputText value="#{productController.selected.createDate}" title="#{bundle.ViewProductTitle_createDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProductLabel_retireDate}"/>
+                        <h:outputText value="#{productController.selected.retireDate}" title="#{bundle.ViewProductTitle_retireDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProductLabel_retireComment}"/>
+                        <h:outputText value="#{productController.selected.retireComment}" title="#{bundle.ViewProductTitle_retireComment}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_regularPrice}"/>
+                        <h:outputText value="#{productController.selected.regularPrice}" title="#{bundle.ViewProductTitle_regularPrice}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_salePrice}"/>
+                        <h:outputText value="#{productController.selected.salePrice}" title="#{bundle.ViewProductTitle_salePrice}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_sku}"/>
+                        <h:outputText value="#{productController.selected.sku}" title="#{bundle.ViewProductTitle_sku}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_inStock}"/>
+                        <h:outputText value="#{productController.selected.inStock}" title="#{bundle.ViewProductTitle_inStock}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_soldIndividually}"/>
+                        <p:selectBooleanCheckbox value="#{productController.selected.soldIndividually}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_weight}"/>
+                        <h:outputText value="#{productController.selected.weight}" title="#{bundle.ViewProductTitle_weight}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_purchaseNote}"/>
+                        <h:outputText value="#{productController.selected.purchaseNote}" title="#{bundle.ViewProductTitle_purchaseNote}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_adminCommission}"/>
+                        <h:outputText value="#{productController.selected.adminCommission}" title="#{bundle.ViewProductTitle_adminCommission}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_productCommissionType}"/>
+                        <h:outputText value="#{productController.selected.productCommissionType}" title="#{bundle.ViewProductTitle_productCommissionType}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_productStatus}"/>
+                        <h:outputText value="#{productController.selected.productStatus}" title="#{bundle.ViewProductTitle_productStatus}"/>
+                        <h:outputText value="#{bundle.ViewProductLabel_productSpecification}"/>
+                        <h:outputText value="#{productController.selected.productSpecification}" title="#{bundle.ViewProductTitle_productSpecification}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProductViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

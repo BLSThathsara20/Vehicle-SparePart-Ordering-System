@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <div>
+            <h:form id="menuForm">
+                <p:menubar class="bg-white">
+                    <p:menuitem class="nav-item" value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                    <p:menuitem value="Add web user" action="#{webUserController.toAddNewWebUser()}"/>
+                    <p:submenu label="#{bundle.Maintenance}">
+                        <p:menuitem class="nav-item dropdown" value="Buyer" outcome="/buyer/List.xhtml" />
+                        <p:menuitem value="CustomerBil" outcome="/customerBil/List.xhtml" />
+                        <p:menuitem value="OrderDetail" outcome="/orderDetail/List.xhtml" />
+                        <p:menuitem value="Person" outcome="/person/List.xhtml" />
+                        <p:menuitem value="Product" outcome="/product/List.xhtml" />
+                        <p:menuitem value="ProductImage" outcome="/productImage/List.xhtml" />
+                        <p:menuitem value="ProductSpecification" outcome="/productSpecification/List.xhtml" />
+                        <p:menuitem value="Seller" outcome="/seller/List.xhtml" />
+                        <p:menuitem value="UserLogin" outcome="/userLogin/List.xhtml" />
+                        <p:menuitem value="WebUser" outcome="/webUser/List.xhtml" />
+                    </p:submenu>
+                    <p:submenu label="Administration">
+                        <p:menuitem class="nav-item dropdown" value="Add web user" outcome="/backOffice/admin/index" />
+                    </p:submenu>
+                </p:menubar>
+            </h:form>
+        </div>
+    </cc:implementation>
+</html>

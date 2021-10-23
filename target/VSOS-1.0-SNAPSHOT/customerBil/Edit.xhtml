@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CustomerBilEditDlg" widgetVar="CustomerBilEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCustomerBilTitle}">
+            <h:form id="CustomerBilEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{customerBilController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{customerBilController.selected.id}" title="#{bundle.EditCustomerBilTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_firstName}" for="firstName" />
+                        <p:inputText id="firstName" value="#{customerBilController.selected.firstName}" title="#{bundle.EditCustomerBilTitle_firstName}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_lastName}" for="lastName" />
+                        <p:inputText id="lastName" value="#{customerBilController.selected.lastName}" title="#{bundle.EditCustomerBilTitle_lastName}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_company}" for="company" />
+                        <p:inputText id="company" value="#{customerBilController.selected.company}" title="#{bundle.EditCustomerBilTitle_company}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_addressLine1}" for="addressLine1" />
+                        <p:inputText id="addressLine1" value="#{customerBilController.selected.addressLine1}" title="#{bundle.EditCustomerBilTitle_addressLine1}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_addressLine2}" for="addressLine2" />
+                        <p:inputText id="addressLine2" value="#{customerBilController.selected.addressLine2}" title="#{bundle.EditCustomerBilTitle_addressLine2}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_city}" for="city" />
+                        <p:inputText id="city" value="#{customerBilController.selected.city}" title="#{bundle.EditCustomerBilTitle_city}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_postCode}" for="postCode" />
+                        <p:inputText id="postCode" value="#{customerBilController.selected.postCode}" title="#{bundle.EditCustomerBilTitle_postCode}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_countryRegion}" for="countryRegion" />
+                        <p:inputText id="countryRegion" value="#{customerBilController.selected.countryRegion}" title="#{bundle.EditCustomerBilTitle_countryRegion}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_stateCountry}" for="stateCountry" />
+                        <p:inputText id="stateCountry" value="#{customerBilController.selected.stateCountry}" title="#{bundle.EditCustomerBilTitle_stateCountry}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{customerBilController.selected.phone}" title="#{bundle.EditCustomerBilTitle_phone}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{customerBilController.selected.email}" title="#{bundle.EditCustomerBilTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_comment}" for="comment" />
+                        <p:inputText id="comment" value="#{customerBilController.selected.comment}" title="#{bundle.EditCustomerBilTitle_comment}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_ip}" for="ip" />
+                        <p:inputText id="ip" value="#{customerBilController.selected.ip}" title="#{bundle.EditCustomerBilTitle_ip}" />
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_created}" for="created" />
+                        <p:calendar id="created" pattern="MM/dd/yyyy HH:mm:ss" value="#{customerBilController.selected.created}" title="#{bundle.EditCustomerBilTitle_created}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_buyer}" for="buyer" />
+                        <p:selectOneMenu id="buyer" value="#{customerBilController.selected.buyer}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{buyerController.itemsAvailableSelectOne}"
+                                           var="buyerItem"
+                                           itemValue="#{buyerItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCustomerBilLabel_orderDetail}" for="orderDetail" />
+                        <p:selectOneMenu id="orderDetail" value="#{customerBilController.selected.orderDetail}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{orderDetailController.itemsAvailableSelectOne}"
+                                           var="orderDetailItem"
+                                           itemValue="#{orderDetailItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{customerBilController.update}" value="#{bundle.Save}" update="display,:CustomerBilListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CustomerBilEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CustomerBilEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

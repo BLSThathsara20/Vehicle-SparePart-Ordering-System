@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CustomerBilViewDlg" widgetVar="CustomerBilViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCustomerBilTitle}">
+            <h:form id="CustomerBilViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{customerBilController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_id}"/>
+                        <h:outputText value="#{customerBilController.selected.id}" title="#{bundle.ViewCustomerBilTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_firstName}"/>
+                        <h:outputText value="#{customerBilController.selected.firstName}" title="#{bundle.ViewCustomerBilTitle_firstName}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_lastName}"/>
+                        <h:outputText value="#{customerBilController.selected.lastName}" title="#{bundle.ViewCustomerBilTitle_lastName}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_company}"/>
+                        <h:outputText value="#{customerBilController.selected.company}" title="#{bundle.ViewCustomerBilTitle_company}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_addressLine1}"/>
+                        <h:outputText value="#{customerBilController.selected.addressLine1}" title="#{bundle.ViewCustomerBilTitle_addressLine1}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_addressLine2}"/>
+                        <h:outputText value="#{customerBilController.selected.addressLine2}" title="#{bundle.ViewCustomerBilTitle_addressLine2}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_city}"/>
+                        <h:outputText value="#{customerBilController.selected.city}" title="#{bundle.ViewCustomerBilTitle_city}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_postCode}"/>
+                        <h:outputText value="#{customerBilController.selected.postCode}" title="#{bundle.ViewCustomerBilTitle_postCode}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_countryRegion}"/>
+                        <h:outputText value="#{customerBilController.selected.countryRegion}" title="#{bundle.ViewCustomerBilTitle_countryRegion}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_stateCountry}"/>
+                        <h:outputText value="#{customerBilController.selected.stateCountry}" title="#{bundle.ViewCustomerBilTitle_stateCountry}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_phone}"/>
+                        <h:outputText value="#{customerBilController.selected.phone}" title="#{bundle.ViewCustomerBilTitle_phone}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_email}"/>
+                        <h:outputText value="#{customerBilController.selected.email}" title="#{bundle.ViewCustomerBilTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_comment}"/>
+                        <h:outputText value="#{customerBilController.selected.comment}" title="#{bundle.ViewCustomerBilTitle_comment}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_ip}"/>
+                        <h:outputText value="#{customerBilController.selected.ip}" title="#{bundle.ViewCustomerBilTitle_ip}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_created}"/>
+                        <h:outputText value="#{customerBilController.selected.created}" title="#{bundle.ViewCustomerBilTitle_created}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_buyer}"/>
+                        <h:outputText value="#{customerBilController.selected.buyer}" title="#{bundle.ViewCustomerBilTitle_buyer}"/>
+                        <h:outputText value="#{bundle.ViewCustomerBilLabel_orderDetail}"/>
+                        <h:outputText value="#{customerBilController.selected.orderDetail}" title="#{bundle.ViewCustomerBilTitle_orderDetail}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CustomerBilViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

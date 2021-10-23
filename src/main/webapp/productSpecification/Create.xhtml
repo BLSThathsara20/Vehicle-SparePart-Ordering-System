@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductSpecificationCreateDlg" widgetVar="ProductSpecificationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProductSpecificationTitle}">
+            <h:form id="ProductSpecificationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productSpecificationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProductSpecificationLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{productSpecificationController.selected.id}" title="#{bundle.CreateProductSpecificationTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateProductSpecificationLabel_productYear}" for="productYear" />
+                        <p:inputText id="productYear" value="#{productSpecificationController.selected.productYear}" title="#{bundle.CreateProductSpecificationTitle_productYear}" />
+                        <p:outputLabel value="#{bundle.CreateProductSpecificationLabel_includedQuantity}" for="includedQuantity" />
+                        <p:inputText id="includedQuantity" value="#{productSpecificationController.selected.includedQuantity}" title="#{bundle.CreateProductSpecificationTitle_includedQuantity}" />
+                        <p:outputLabel value="#{bundle.CreateProductSpecificationLabel_brand}" for="brand" />
+                        <p:inputText id="brand" value="#{productSpecificationController.selected.brand}" title="#{bundle.CreateProductSpecificationTitle_brand}" />
+                        <p:outputLabel value="#{bundle.CreateProductSpecificationLabel_producCondition}" for="producCondition" />
+                        <p:inputText id="producCondition" value="#{productSpecificationController.selected.producCondition}" title="#{bundle.CreateProductSpecificationTitle_producCondition}" />
+                        <p:outputLabel value="#{bundle.CreateProductSpecificationLabel_model}" for="model" />
+                        <p:inputText id="model" value="#{productSpecificationController.selected.model}" title="#{bundle.CreateProductSpecificationTitle_model}" />
+                        <p:outputLabel value="#{bundle.CreateProductSpecificationLabel_hand}" for="hand" />
+                        <p:inputText id="hand" value="#{productSpecificationController.selected.hand}" title="#{bundle.CreateProductSpecificationTitle_hand}" />
+                        <p:outputLabel value="#{bundle.CreateProductSpecificationLabel_extra}" for="extra" />
+                        <p:inputText id="extra" value="#{productSpecificationController.selected.extra}" title="#{bundle.CreateProductSpecificationTitle_extra}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productSpecificationController.create}" value="#{bundle.Save}" update="display,:ProductSpecificationListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductSpecificationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductSpecificationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

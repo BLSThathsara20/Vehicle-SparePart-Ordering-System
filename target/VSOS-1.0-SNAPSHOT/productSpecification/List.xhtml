@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template1.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProductSpecificationTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ProductSpecificationListForm">
+                <p:panel header="#{bundle.ListProductSpecificationTitle}">
+                    <p:dataTable id="datalist" value="#{productSpecificationController.items}" var="item"
+                                 selectionMode="single" selection="#{productSpecificationController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductSpecificationTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductSpecificationTitle_productYear}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productYear}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductSpecificationTitle_includedQuantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.includedQuantity}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductSpecificationTitle_brand}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.brand}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductSpecificationTitle_producCondition}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.producCondition}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductSpecificationTitle_model}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.model}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductSpecificationTitle_hand}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hand}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductSpecificationTitle_extra}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.extra}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{productSpecificationController.prepareCreate}" update=":ProductSpecificationCreateForm" oncomplete="PF('ProductSpecificationCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ProductSpecificationViewForm" oncomplete="PF('ProductSpecificationViewDialog').show()" disabled="#{empty productSpecificationController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ProductSpecificationEditForm" oncomplete="PF('ProductSpecificationEditDialog').show()" disabled="#{empty productSpecificationController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{productSpecificationController.destroy}" update=":growl,datalist" disabled="#{empty productSpecificationController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

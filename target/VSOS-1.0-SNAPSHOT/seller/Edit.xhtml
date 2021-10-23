@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SellerEditDlg" widgetVar="SellerEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSellerTitle}">
+            <h:form id="SellerEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sellerController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSellerLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{sellerController.selected.id}" title="#{bundle.EditSellerTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditSellerLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{sellerController.selected.name}" title="#{bundle.EditSellerTitle_name}" />
+                        <p:outputLabel value="#{bundle.EditSellerLabel_company}" for="company" />
+                        <p:inputText id="company" value="#{sellerController.selected.company}" title="#{bundle.EditSellerTitle_company}" />
+                        <p:outputLabel value="#{bundle.EditSellerLabel_retiredAt}" for="retiredAt" />
+                        <p:calendar id="retiredAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{sellerController.selected.retiredAt}" title="#{bundle.EditSellerTitle_retiredAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSellerLabel_retireComments}" for="retireComments" />
+                        <p:inputText id="retireComments" value="#{sellerController.selected.retireComments}" title="#{bundle.EditSellerTitle_retireComments}" />
+                        <p:outputLabel value="#{bundle.EditSellerLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{sellerController.selected.createdAt}" title="#{bundle.EditSellerTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSellerLabel_person}" for="person" />
+                        <p:selectOneMenu id="person" value="#{sellerController.selected.person}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{personController.itemsAvailableSelectOne}"
+                                           var="personItem"
+                                           itemValue="#{personItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sellerController.update}" value="#{bundle.Save}" update="display,:SellerListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SellerEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SellerEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

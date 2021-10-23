@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BuyerEditDlg" widgetVar="BuyerEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBuyerTitle}">
+            <h:form id="BuyerEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{buyerController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBuyerLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{buyerController.selected.id}" title="#{bundle.EditBuyerTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditBuyerLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{buyerController.selected.name}" title="#{bundle.EditBuyerTitle_name}" />
+                        <p:outputLabel value="#{bundle.EditBuyerLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{buyerController.selected.email}" title="#{bundle.EditBuyerTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditBuyerLabel_retiredAt}" for="retiredAt" />
+                        <p:calendar id="retiredAt" pattern="MM/dd/yyyy" value="#{buyerController.selected.retiredAt}" title="#{bundle.EditBuyerTitle_retiredAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBuyerLabel_retireComments}" for="retireComments" />
+                        <p:inputText id="retireComments" value="#{buyerController.selected.retireComments}" title="#{bundle.EditBuyerTitle_retireComments}" />
+                        <p:outputLabel value="#{bundle.EditBuyerLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy" value="#{buyerController.selected.createdAt}" title="#{bundle.EditBuyerTitle_createdAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBuyerLabel_person}" for="person" />
+                        <p:selectOneMenu id="person" value="#{buyerController.selected.person}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{personController.itemsAvailableSelectOne}"
+                                           var="personItem"
+                                           itemValue="#{personItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{buyerController.update}" value="#{bundle.Save}" update="display,:BuyerListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BuyerEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BuyerEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

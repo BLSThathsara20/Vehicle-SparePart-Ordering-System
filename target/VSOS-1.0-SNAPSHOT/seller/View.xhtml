@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SellerViewDlg" widgetVar="SellerViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSellerTitle}">
+            <h:form id="SellerViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sellerController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSellerLabel_id}"/>
+                        <h:outputText value="#{sellerController.selected.id}" title="#{bundle.ViewSellerTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewSellerLabel_name}"/>
+                        <h:outputText value="#{sellerController.selected.name}" title="#{bundle.ViewSellerTitle_name}"/>
+                        <h:outputText value="#{bundle.ViewSellerLabel_company}"/>
+                        <h:outputText value="#{sellerController.selected.company}" title="#{bundle.ViewSellerTitle_company}"/>
+                        <h:outputText value="#{bundle.ViewSellerLabel_retiredAt}"/>
+                        <h:outputText value="#{sellerController.selected.retiredAt}" title="#{bundle.ViewSellerTitle_retiredAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSellerLabel_retireComments}"/>
+                        <h:outputText value="#{sellerController.selected.retireComments}" title="#{bundle.ViewSellerTitle_retireComments}"/>
+                        <h:outputText value="#{bundle.ViewSellerLabel_createdAt}"/>
+                        <h:outputText value="#{sellerController.selected.createdAt}" title="#{bundle.ViewSellerTitle_createdAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSellerLabel_person}"/>
+                        <h:outputText value="#{sellerController.selected.person}" title="#{bundle.ViewSellerTitle_person}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SellerViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
